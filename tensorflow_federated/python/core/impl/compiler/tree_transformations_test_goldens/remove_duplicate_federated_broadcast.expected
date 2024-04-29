@@ -1,0 +1,18 @@
+Before transformation:
+
+(let
+  broadcast_0=federated_broadcast(data),
+  broadcast_1=federated_broadcast(data)
+ in <
+  broadcast_0,
+  broadcast_1
+>)
+
+After transformation:
+
+(let
+  _lhn1=federated_broadcast(data)
+ in <
+  _lhn1,
+  _lhn1
+>)

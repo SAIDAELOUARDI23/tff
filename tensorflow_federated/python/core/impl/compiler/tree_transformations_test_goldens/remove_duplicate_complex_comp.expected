@@ -1,0 +1,33 @@
+Before transformation:
+
+(arg -> (let
+  broadcast_0=federated_broadcast(arg),
+  map_0=federated_map(<
+    comp#a,
+    broadcast_0
+  >),
+  mean_0=federated_mean(map_0),
+  broadcast_1=federated_broadcast(arg),
+  map_1=federated_map(<
+    comp#a,
+    broadcast_1
+  >),
+  mean_1=federated_mean(map_1)
+ in <
+  mean_0,
+  mean_1
+>))
+
+After transformation:
+
+(_lhn1 -> (let
+  _lhn2=federated_broadcast(_lhn1),
+  _lhn3=federated_map(<
+    comp#a,
+    _lhn2
+  >),
+  _lhn4=federated_mean(_lhn3)
+ in <
+  _lhn4,
+  _lhn4
+>))
